@@ -1,4 +1,4 @@
-import { concentrationFeed } from "./init";
+import { concentrationFeed, etta } from "./init";
 import { nozzlesParameters } from "./nozzle";
 
 export function Separation(temperature) {
@@ -13,27 +13,35 @@ export function ConcentrationProduct(separation) {
     return separation*concentrationFeed/(1+(separation-1)*concentrationFeed);
 }
 
-export function Flegma(separation, concentrationProduct) {
-    return 1/(separation-1)*(concentrationProduct/concentrationFeed-separation*(1-concentrationProduct/concentrationFeed));
+export function Flegma(separation, concentrationWaste) {
+    concentrationWaste = parseFloat(concentrationWaste);
+    return (1-separation*concentrationWaste/concentrationFeed+(separation-1)*concentrationWaste)/((separation-1)*(1-concentrationFeed));
 }
 
 export function WorkFlegma(flegma) {
-    return 1.3*flegma+0.3;
+    return 1.1*flegma;
 }
 
-export function NumberPlatesEnrichment(enrichment, concentrationProduct) {
-    concentrationProduct = parseFloat(concentrationProduct);
-    return Math.ceil(1/enrichment*Math.log(concentrationProduct*(1-concentrationFeed)/(concentrationFeed*(1-concentrationProduct))));
-}
-
-export function NumberPlatesImpoverishment(enrichment, concentrationWaste) {
+export function flowWaste(feed, concentrationWaste, concentrationProduct) {
     concentrationWaste = parseFloat(concentrationWaste);
-    return Math.ceil(1/enrichment*Math.log(concentrationFeed*(1-concentrationWaste)/(concentrationWaste*(1-concentrationFeed))));
+    concentrationProduct = parseFloat(concentrationProduct);
+    feed = parseFloat(feed);
+    return feed*(concentrationFeed-concentrationProduct)/(concentrationWaste-concentrationProduct);
 }
 
-export function NumberPlates(numberEnrichment, numberImpoverishment) {
-    return numberEnrichment+numberImpoverishment;
+export function flowProduct(feed, waste) {
+    feed = parseFloat(feed);
+    return feed-waste;
 }
+
+export function InnerFlowL(flegma, waste) {
+    return flegma*waste;
+}
+
+export function InnerFlowG(inner, waste) {
+    return inner+waste;
+}
+
 
 export function NozzleDiameter(name) {
     for (let i = 0; i < nozzlesParameters.length; i++) {
@@ -41,4 +49,20 @@ export function NozzleDiameter(name) {
             return 4*nozzlesParameters[i].volume/nozzlesParameters[i].surfaceArea;
         };
     }
+}
+
+export function VETS(flow, diameter) {
+    flow = parseFloat(flow);
+    diameter = parseFloat(diameter);
+    return (0.024*flow+1.6131)*(0.0134*diameter+0.8984);
+}
+
+export function KMP(diameterBase, diameter) {
+    diameter = parseFloat(diameter);
+    diameterBase = parseFloat(diameterBase);
+    return 1+(1-etta)/etta*Math.log10(Math.pow(diameter,2)/Math.pow(diameterBase,2))
+}
+
+export function VETSRes(vets, kmp) {
+    return vets*kmp;
 }

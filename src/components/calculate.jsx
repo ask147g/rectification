@@ -28,21 +28,33 @@ class Calculate extends React.Component {
         <div className="output">
             Концентрация отбора: {this.props.output.concentrationProductPrimary}.
         </div>
+        <h2>Многократный эффект разделения</h2>
         <div className="output">
             Флегмовое число: {this.props.output.flegma}.
         </div>
         <div className="output">
             Рабочее флегмовое число: {this.props.output.workFlegma}.
         </div>
-        <h2>Многократный эффект разделения</h2>
         <div className="output">
-            Число ступеней обогащения: {this.props.output.numberEnrichment}.
+            Поток отвала: {this.props.output.flowWaste}.
         </div>
         <div className="output">
-            Число ступеней обеднения: {this.props.output.numberImpoverishment}.
+            Поток отбора: {this.props.output.flowProduct}.
         </div>
         <div className="output">
-            Число ступеней: {this.props.output.number}.
+            L: {this.props.output.innerL}.
+        </div>
+        <div className="output">
+            G: {this.props.output.innerG}.
+        </div>
+        <div className="output">
+            ВЭТС, базовый, см: {this.props.output.vetsBase}.
+        </div>
+        <div className="output">
+            КМП: {this.props.output.kmp}.
+        </div>
+        <div className="output">
+            ВЭТС, см: {this.props.output.vets}.
         </div>
     </>
   )

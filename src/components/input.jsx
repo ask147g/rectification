@@ -30,22 +30,22 @@ class Input extends React.Component {
         <div className="input">
             Концентрация отвала: <input name="concentrationWaste" defaultValue={Init.concentrationWaste}></input>
         </div>
-        {
-        }
+        <div className="input">
+            Поток питания: <input name="flowFeed" defaultValue={Init.flowFeed}></input>
+        </div>
+        <div className="input">
+            Удельный поток, базовый: <input name="flowBase" defaultValue={Init.flowBase}></input>
+        </div>
+        <div className="input">
+            Диаметр колонны, базовый, мм: <input name="diameterBase" defaultValue={Init.diameterBase}></input>
+        </div>
+        <div className="input">
+            Диаметр колонны, мм: <input name="diameter" defaultValue={Init.diameter}></input>
+        </div>
         <div className="input">
             Насадка:
             <select defaultValue={nozzles[0]} name="nozzle">
                 <option>{nozzles[0]}</option>
-                <option>{nozzles[1]}</option>
-                <option>{nozzles[2]}</option>
-                <option>{nozzles[3]}</option>
-                <option>{nozzles[4]}</option>
-                <option>{nozzles[5]}</option>
-                <option>{nozzles[6]}</option>
-                <option>{nozzles[7]}</option>
-                <option>{nozzles[8]}</option>
-                <option>{nozzles[9]}</option>
-                <option>{nozzles[10]}</option>
             </select>
         </div>
         <button className="calculate" onClick={() => this.add()}>{this.props.textButton}</button>
