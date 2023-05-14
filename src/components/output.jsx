@@ -54,8 +54,9 @@ class Output extends React.Component {
     const innerL = equation.InnerFlowL(workFlegma, flowWaste);
     const innerG = equation.InnerFlowG(innerL, flowWaste);
     const vetsBase = equation.VETS(flowBase, diameterBase);
-    const kmp = equation.KMP(diameterBase, diameter);
-    const vets = equation.VETSRes(vetsBase, kmp);
+    const kmp = equation.KMP2(diameterBase, flowBase, innerL);
+    const kmpD = equation.KMP(diameterBase, diameter);
+    const vets = equation.VETSRes(vetsBase, kmp, kmpD);
 
     this.state = {
         separation: separation.toFixed(4),

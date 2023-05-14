@@ -63,6 +63,13 @@ export function KMP(diameterBase, diameter) {
     return 1+(1-etta)/etta*Math.log10(Math.pow(diameter,2)/Math.pow(diameterBase,2))
 }
 
-export function VETSRes(vets, kmp) {
-    return vets*kmp;
+
+export function KMP2(diameterBase, flowBase, flow) {
+    diameterBase = parseFloat(diameterBase);
+    flowBase = parseFloat(flowBase);
+    return 1+(1-etta)/etta*Math.log10(4*flow/(3.14*flowBase*Math.pow(diameterBase/100,2)))
+}
+
+export function VETSRes(vets, kmp, kmp2) {
+    return vets*kmp*kmp2;
 }

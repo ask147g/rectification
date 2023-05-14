@@ -40,8 +40,9 @@ class Input extends React.Component {
             Диаметр колонны, базовый, мм: <input name="diameterBase" defaultValue={Init.diameterBase}></input>
         </div>
         <div className="input">
-            Диаметр колонны, мм: <input name="diameter" defaultValue={Init.diameter}></input>
+        Диаметр колонны, мм: <input name="diameter" defaultValue={Init.diameter}></input>
         </div>
+
         <div className="input">
             Насадка:
             <select defaultValue={nozzles[0]} name="nozzle">
