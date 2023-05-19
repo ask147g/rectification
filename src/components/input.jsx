@@ -31,23 +31,31 @@ class Input extends React.Component {
             Концентрация отвала: <input name="concentrationWaste" defaultValue={Init.concentrationWaste}></input>
         </div>
         <div className="input">
-            Поток питания: <input name="flowFeed" defaultValue={Init.flowFeed}></input>
+            Поток питания, г/с: <input name="flowFeed" defaultValue={Init.flowFeed}></input>
         </div>
         <div className="input">
-            Удельный поток, базовый: <input name="flowBase" defaultValue={Init.flowBase}></input>
+            Удельный поток (базовый*), см3/см3*сек: <input name="flowBase" defaultValue={Init.flowBase}></input>
         </div>
         <div className="input">
-            Диаметр колонны, базовый, мм: <input name="diameterBase" defaultValue={Init.diameterBase}></input>
+            Диаметр колонны (базовый*), мм: <input name="diameterBase" defaultValue={Init.diameterBase}></input>
         </div>
         <div className="input">
         Диаметр колонны, мм: <input name="diameter" defaultValue={Init.diameter}></input>
         </div>
+        
 
         <div className="input">
             Насадка:
             <select defaultValue={nozzles[0]} name="nozzle">
-                <option>{nozzles[0]}</option>
+            <option>{nozzles[0]}</option>
+            <option>{nozzles[1]}</option>
             </select>
+        </div>
+        <div className="input">
+        Высота насадки, см: <input name="hightNozzle" defaultValue={Init.hightNozzle}></input>
+        </div>
+        <div>
+          *Базовый - для которого известно значение ВЭТС. Удельная циркуляция [8.3; 24.8]. Диаметр колонны [1.8; 2.3].
         </div>
         <button className="calculate" onClick={() => this.add()}>{this.props.textButton}</button>
         {this.state.calculate &&  <Output />}

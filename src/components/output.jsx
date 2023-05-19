@@ -39,6 +39,8 @@ class Output extends React.Component {
 
     // Nozzle
     const nozzleDiameter = equation.NozzleDiameter(nozzle);
+    const res_hightNozzle = document.getElementsByName("hightNozzle");
+    const hightNozzle = res_hightNozzle[0].value;
 
     // Primary
     const separation = equation.Separation(temperature);
@@ -57,6 +59,12 @@ class Output extends React.Component {
     const kmp = equation.KMP2(diameterBase, flowBase, innerL);
     const kmpD = equation.KMP(diameterBase, diameter);
     const vets = equation.VETSRes(vetsBase, kmp, kmpD);
+    const numberPlates = equation.NumberPlates(hightNozzle, vets);
+    const reynolds = equation.Reynolds(nozzle, diameter, innerG);
+    const velocity = equation.Velocity(innerG, diameter);
+    const pressure = equation.deltaPressure(nozzle, reynolds, velocity, numberPlates, vets);
+    const coeffSeparation = equation.CoefficientSeparation(separation, numberPlates);
+    const concentrationProductColumn = equation.ConcentrationProduct(coeffSeparation);
 
     this.state = {
         separation: separation.toFixed(4),
@@ -72,6 +80,12 @@ class Output extends React.Component {
         vetsBase: vetsBase.toFixed(4),
         kmp: kmp.toFixed(4),
         vets: vets.toFixed(4),
+        numberPlates: Math.ceil(numberPlates),
+        reynolds: reynolds.toFixed(4),
+        velocity: (velocity/100).toFixed(4),
+        coeffSeparation: coeffSeparation.toFixed(4),
+        concentrationProductColumn: concentrationProductColumn.toFixed(4),
+        pressure: pressure,
         end: true
     }
 }
