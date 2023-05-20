@@ -55,7 +55,7 @@ class Input extends React.Component {
         Высота насадки, см: <input name="hightNozzle" defaultValue={Init.hightNozzle}></input>
         </div>
         <div>
-          *Базовый - для которого известно значение ВЭТС. Удельная циркуляция [8.3; 24.8]. Диаметр колонны [1.8; 2.3].
+          *Базовый - для которого известно значение ВЭТС. Удельная циркуляция [8.3; 24.8]. Диаметр колонны [7.6; 11].
         </div>
         <button className="calculate" onClick={() => this.add()}>{this.props.textButton}</button>
         {this.state.calculate &&  <Output />}

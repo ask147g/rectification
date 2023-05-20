@@ -90,7 +90,7 @@ class Calculate extends React.Component {
                         this.props.output.pressure.map((result) =>
                             <tr>
                                 <td><div>{result.plate}</div></td>
-                                <td><div>{result.pressure.toFixed(6)}</div></td>
+                                <td><div>{result.pressure.toFixed(4)}</div></td>
                             </tr>
                         )
                     }

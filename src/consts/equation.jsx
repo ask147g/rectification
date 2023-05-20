@@ -111,14 +111,14 @@ export function deltaPressure(name, reynolds, velocity, numberPlates, vets) {
     let pressure = [];
     for (let i = 0; i < nozzlesParameters.length; i++) {
         if (name == nozzlesParameters[i].name) {
-            pressure[0] = resistance*velocity*velocity*nozzlesParameters[i].volume*ro/(8*Math.pow(nozzlesParameters[i].surfaceArea-vets/100, 3));
+            pressure[0] = vets*resistance*velocity*velocity*nozzlesParameters[i].volume*ro/(8*Math.pow(nozzlesParameters[i].surfaceArea-vets/100, 3));
         };
     }
     
     for (let k = 1; k < numberPlates; k++) {
         for (let i = 0; i < nozzlesParameters.length; i++) {
             if (name == nozzlesParameters[i].name) {
-                pressure[k] = pressure[k-1] + resistance*velocity*velocity*nozzlesParameters[i].volume*ro/(8*Math.pow(nozzlesParameters[i].surfaceArea-(k+1)*vets/100, 3));
+                pressure[k] = pressure[k-1] + vets*resistance*velocity*velocity*nozzlesParameters[i].volume*ro/(8*Math.pow(nozzlesParameters[i].surfaceArea-(k+1)*vets/100, 3));
             };
         }
     }

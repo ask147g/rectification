@@ -62,8 +62,8 @@ class Output extends React.Component {
     const numberPlates = equation.NumberPlates(hightNozzle, vets);
     const reynolds = equation.Reynolds(nozzle, diameter, innerG);
     const velocity = equation.Velocity(innerG, diameter);
-    const pressure = equation.deltaPressure(nozzle, reynolds, velocity, numberPlates, vets);
-    const coeffSeparation = equation.CoefficientSeparation(separation, numberPlates);
+    const pressure = equation.deltaPressure(nozzle, reynolds, velocity, Math.ceil(numberPlates), vets);
+    const coeffSeparation = equation.CoefficientSeparation(separation, Math.ceil(numberPlates));
     const concentrationProductColumn = equation.ConcentrationProduct(coeffSeparation);
 
     this.state = {
