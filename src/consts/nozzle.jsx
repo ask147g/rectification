@@ -9,8 +9,8 @@ export const nozzlesParameters = [
     },
     {
         name: nozzles[1],
-        surfaceArea: 1500,
-        volume: 80,
+        surfaceArea: 2640,
+        volume: 85,
         A: 210,
         B: 0.71
     }
