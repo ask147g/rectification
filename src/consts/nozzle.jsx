@@ -2,8 +2,8 @@ import { nozzles } from "./text"
 export const nozzlesParameters = [
     {
         name: nozzles[0],
-        surfaceArea: 350,
-        volume: 95,
+        surfaceArea: 1150,
+        volume: 74,
         A: 16,
         B: 0.2
     },
